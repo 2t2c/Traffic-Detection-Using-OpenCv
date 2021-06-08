@@ -45,6 +45,9 @@ while cap.isOpened():
                     cy = int(m["m01"] / m["m00"])
 
                     x,y,w,h = cv2.boundingRect(contours[i])
+                    if area > 10000:
+                        cv2.rectangle(frame, (x, y), (x + w, y + h), (100, 46, 200), 2)
+                        cv2.putText(frame, "WARNING", (cx + 10, cy + 10), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (100, 46, 200),2)
                     cv2.rectangle(frame, (x,y), (x+w,y+h), (100,46,200), 2)
                     cv2.putText(frame, str(cx) + "," + str(cy), (cx + 10, cy + 10), cv2.FONT_HERSHEY_SIMPLEX, .3,
                                 (100,46,200), 1)
